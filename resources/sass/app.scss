@@ -1,0 +1,126 @@
+/* ==== Fuentes ==== */
+@import url('https://fonts.bunny.net/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+/* ==== Variables Bootstrap ==== */
+@import 'variables';
+
+/* ==== Bootstrap ==== */
+@import 'bootstrap/scss/bootstrap';
+
+/* ==== Tailwind ==== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==== ESTILOS PERSONALIZADOS ==== */
+
+body {
+    background: url('/images/fondo-biblioteca.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    color: #0A1A2F;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    margin-top: 80px;
+    color: #0A1A2F;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 30px;
+}
+
+/* Botón principal */
+.btn-primary {
+    background-color: #C9A227 !important;
+    border-color: #A48521 !important;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 12px 24px;
+}
+
+.btn-primary:hover {
+    background-color: #A48521 !important;
+}
+
+/* Fondo transparente detrás del contenido */
+.container {
+    background: rgba(255, 255, 255, 0.78);
+    padding: 40px;
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+    margin-top: 60px;
+}
+
+/* Diseño del encabezado */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.logo {
+    width: 90px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-family: "Playfair Display", serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: #000;
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+}
+
+/* Pantalla centrada */
+.fullscreen-center {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .title {
+        font-size: 36px;
+    }
+
+    .logo {
+        width: 90px;
+    }
+
+    .btn {
+        width: 80%;
+        margin-bottom: 10px;
+    }
+}
+
+/* Login */
+.login-box {
+    margin-top: 60px;
+}
+
+.login-logo {
+    width: 120px;
+    margin-bottom: 10px;
+    animation: fadeIn 1s ease;
+}
+
+.login-box-msg {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: bold;
+    color: #0A1A2F;
+}
