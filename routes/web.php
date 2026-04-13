@@ -1,5 +1,7 @@
 <?php
 use App\Http\Controllers\ProductoController; 
+use App\Http\Controllers\ClienteController;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -46,3 +48,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('productos', ProductoController::class); 
 });
+
+Route::resource('clientes', ClienteController::class);
+Route::get('/catalogo', function () {
+    return view('shop');
+});
+
+Route::get('/registro', function () {
+    return view('auth.register');
+});
+
+Route::get('/producto-detalle', function () {
+    return view('productos.show');
+});
+

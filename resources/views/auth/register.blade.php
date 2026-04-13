@@ -6,7 +6,10 @@
     <div class="register-box">
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <img src="{{ asset('backend/dist/img/logo_audysoft.png') }}" alt="">
+                <h1 class="text-2xl font-serif font-bold text-[#2C3E50]">
+                    Tu Espacio <span class="text-amber-600">Literario</span>
+                </h1>
+    </div>
             </div>
             <div class="card-body">
                 <p class="login-box-msg">{{ __('Register') }}</p>
