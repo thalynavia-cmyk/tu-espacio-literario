@@ -1,69 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\producto;
-use App\Models\User;
+use App\Models\Producto;
 
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function store(Request $request) 
     {
-        $productos = Producto::all();
+        $data = $request->validate([
+            'nombre'      => 'required',
+            'descripcion' => 'nullable',
+            'precio'      => 'required|numeric',
+            'stock'       => 'required|integer',
+            'estado'      => 'required',
+        ]);
 
-        return view('productos.index',compact('productos'));
- 
-    }
+        Producto::create($data);
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return redirect()->back()->with('success', 'Producto creado'); 
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
-}
+} // <--- Esta llave es la que faltaba para cerrar la clase

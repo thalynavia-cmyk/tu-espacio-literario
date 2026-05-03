@@ -42,8 +42,6 @@ Route::get('/inicio', function () {
     return view('inicio');
 });
 
-
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('productos', ProductoController::class); 
@@ -61,4 +59,18 @@ Route::get('/registro', function () {
 Route::get('/producto-detalle', function () {
     return view('productos.show');
 });
+
+Route::get('/clientes', function () {
+    return view('clientes.index');
+});
+
+Route::get('/autores', function () {
+    return view('autores');
+});
+
+Route::post('/clientes', [ClienteController::class, 'store']);
+
+use App\Http\Controllers\FacturaController;
+
+Route::post('/facturas', [FacturaController::class, 'store']);
 
