@@ -7,7 +7,7 @@ use Tests\TestCase;
 
 class ClienteTest extends TestCase
 {
-    use RefreshDatabase; // <--- Tu escudo de seguridad
+    use RefreshDatabase; 
 
    public function test_un_cliente_se_puede_crear_en_la_bd()
 {

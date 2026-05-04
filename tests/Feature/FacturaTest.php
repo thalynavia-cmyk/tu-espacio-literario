@@ -8,13 +8,12 @@ use Tests\TestCase;
 
 class FacturaTest extends TestCase
 {
-    use RefreshDatabase; // <--- Tu escudo para usar la RAM
+    use RefreshDatabase; 
 
     public function test_se_puede_registrar_una_factura()
     {
         $this->withoutExceptionHandling();
 
-        // 1. Creamos un cliente primero porque la factura lo necesita
         $cliente = Cliente::create([
             'nombre'        => 'Comprador de Libros',
             'email'         => 'comprador@test.com',
@@ -24,10 +23,9 @@ class FacturaTest extends TestCase
             'registradopor' => 'Admin'
         ]);
 
-        // 2. Datos de la factura
         $datos = [
             'fecha'          => now()->format('Y-m-d'),
-            'cliente_id'     => $cliente->id, // <--- Conexión con el cliente
+            'cliente_id'     => $cliente->id, 
             'tipopago'       => 'Efectivo',
             'saldopendiente' => 0,
             'total'          => 1200.50,
@@ -35,10 +33,8 @@ class FacturaTest extends TestCase
             'registradopor'  => 'Sistema'
         ];
 
-        // 3. Ejecutamos la petición
         $response = $this->post('/facturas', $datos);
 
-        // 4. Verificamos que exista en la BD de pruebas
         $this->assertDatabaseHas('facturas', [
             'cliente_id' => $cliente->id,
             'total'      => 1200.50
