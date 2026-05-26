@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tu Espacio Literario</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdn.tailwindcss.com"></script> <!-- Ayuda extra para el centrado -->
 </head>
 <body class="antialiased bg-[#fdfbf7] min-h-screen flex flex-col items-center justify-center text-center p-4">
