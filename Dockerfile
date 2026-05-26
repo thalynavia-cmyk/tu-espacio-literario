@@ -22,6 +22,10 @@ COPY . .
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install --no-dev --optimize-autoloader
+RUN curl -sL https://nodesource.com | bash - \
+    && apt-get install -y nodejs \
+    && npm install \
+    && npm run build
 
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
