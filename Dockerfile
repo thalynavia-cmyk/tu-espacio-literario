@@ -1,3 +1,10 @@
+FROM node:18-alpine AS frontend-builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
 FROM php:8.2-apache
 
 RUN apt-get update && apt-get install -y \
@@ -20,12 +27,10 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 WORKDIR /var/www/html
 COPY . .
 
+COPY --from=frontend-builder /app/public/build ./public/build
+
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install --no-dev --optimize-autoloader
-RUN curl -sL https://nodesource.com | bash - \
-    && apt-get install -y nodejs \
-    && npm install \
-    && npm run build
 
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
